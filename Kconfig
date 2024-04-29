@@ -55,6 +55,11 @@ config PMW3610_SCROLL_TICK
     help
       Scroll tick value.
 
+config PMW3610_ANGLE
+    int "PMW3610's Angle"
+    default 0
+    range 0 360
+
 choice
     prompt "Select PMW3610's polling rate"
     default PMW3610_POLLING_RATE_250
