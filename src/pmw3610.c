@@ -15,6 +15,7 @@
 #include <zephyr/input/input.h>
 #include <zmk/keymap.h>
 #include "pmw3610.h"
+#include <math.h>
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(pmw3610, CONFIG_INPUT_LOG_LEVEL);
@@ -632,7 +633,18 @@ static int pmw3610_report_data(const struct device *dev) {
 
     int16_t x;
     int16_t y;
+    
+    double radian;
 
+    if(CONFIG_PMW3610_ANGLE > 0)
+    {
+        radian = (double)CONFIG_PMW3610_ANGLE * 0.0174533;
+        x = (raw_x * cos(radian)) - (raw_y * sin(radian));
+        y = (raw_x * sin(radian)) - (raw_y * cos(radian));
+    }
+
+
+/*
     if (IS_ENABLED(CONFIG_PMW3610_ORIENTATION_0)) {
         x = -raw_x;
         y = raw_y;
@@ -654,6 +666,7 @@ static int pmw3610_report_data(const struct device *dev) {
     if (IS_ENABLED(CONFIG_PMW3610_INVERT_Y)) {
         y = -y;
     }
+    */
 
 #ifdef CONFIG_PMW3610_SMART_ALGORITHM
     int16_t shutter =
