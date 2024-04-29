@@ -641,6 +641,8 @@ static int pmw3610_report_data(const struct device *dev) {
         radian = (double)CONFIG_PMW3610_ANGLE * 0.0174533;
         x = ((double)raw_x * (double)cos(radian)) - ((double)raw_y * (double)sin(radian));
         y = ((double)raw_x * (double)sin(radian)) + ((double)raw_y * (double)cos(radian));
+
+        y = -y;
     }
 
 
