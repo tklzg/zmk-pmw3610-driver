@@ -59,6 +59,8 @@ config PMW3610_ANGLE
     int "PMW3610's Angle"
     default 0
     range 0 360
+    help
+      Default angle
 
 choice
     prompt "Select PMW3610's polling rate"
