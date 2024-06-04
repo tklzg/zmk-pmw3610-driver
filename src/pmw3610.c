@@ -560,11 +560,6 @@ static void deactivate_automouse_layer(struct k_timer *timer) {
     {
         zmk_keymap_layer_deactivate(AUTOMOUSE_LAYER);
     }
-    else
-    {
-        k_timer_start(&automouse_layer_timer, K_MSEC(CONFIG_PMW3610_AUTOMOUSE_TIMEOUT_MS), K_NO_WAIT);
-    }
-    
 }
 
 K_TIMER_DEFINE(automouse_layer_timer, deactivate_automouse_layer, NULL);
