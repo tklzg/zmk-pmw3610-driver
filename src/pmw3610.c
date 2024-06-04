@@ -544,7 +544,7 @@ static void pmw3610_async_init(struct k_work *work) {
 }
 
 #define AUTOMOUSE_LAYER (DT_PROP(DT_DRV_INST(0), automouse_layer))
-#define LOWE_LAYER 1
+#define LOWER_LAYER 1
 #if AUTOMOUSE_LAYER > 0
 struct k_timer automouse_layer_timer;
 static bool automouse_triggered = false;
